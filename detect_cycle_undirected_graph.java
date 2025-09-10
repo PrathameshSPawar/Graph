@@ -1,4 +1,5 @@
 //https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
+//in both way BFS and DFS
 class Pair {
     int val;
     int parent;
@@ -29,6 +30,23 @@ class Solution {
         return false;
     }
     
+    
+    public boolean dfs(Pair src,List<List<Integer>> adj,int visited[]) {
+        int val=src.val;
+        int parent=src.parent;
+        visited[val]=1;
+        for(int adjecent : adj.get(val)) {
+            if(visited[adjecent]==0) {
+                if(dfs(new Pair(adjecent,val),adj,visited)==true) {
+                    return true;
+                }
+            } else if(adjecent!=parent) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public boolean isCycle(int V, int[][] edges) {
         // Code here
         List<List<Integer>> adj = new ArrayList<>();
@@ -39,7 +57,8 @@ class Solution {
         Arrays.fill(visited,0);
         for(int i=0;i<V;i++) {
             if(visited[i]==0) {
-                boolean ans=bfs(i,adj,visited);
+                boolean ans=dfs(new Pair(i,-1),adj,visited);
+                //boolean ans=bfs(i,adj,visited);
                 if(ans==true) {
                     return true;
                 }
