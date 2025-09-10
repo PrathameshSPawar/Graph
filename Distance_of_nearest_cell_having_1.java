@@ -1,4 +1,5 @@
 //https://www.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1
+//https://leetcode.com/problems/01-matrix/description/
 class Pair {
     int first;
     int sec;
