@@ -1,5 +1,10 @@
 //https://leetcode.com/problems/is-graph-bipartite/description/
 //BFS SOLUTION
+//A graph is bipartite if it can be colored using 2 colors such that no two adjacent nodes have the same color.
+//Odd cycle present → Not bipartite (because two colors are not enough).
+//Even cycle present → Bipartite (colors alternate properly).
+//No cycle (acyclic graph, like a tree) → Always bipartite
+
 class Solution {
     public boolean isBipartite(int[][] graph) {
         int n=graph.length;
